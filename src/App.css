@@ -1,0 +1,38 @@
+body {
+  background-color: rgb(231, 187, 255);
+}
+
+.form-button {
+  background: rgb(253, 253, 177);
+  border-radius: 5px;
+  border: 3px solid rgb(240, 225, 19);
+  font-family: sans-serif ; 
+  color: rgb(231, 217, 12);
+  font-weight: bold ;
+  
+}
+
+.form-service {
+  border: 3px solid rgb(210, 137, 255);
+  border-radius: 4px;
+  background: rgb(244, 227, 255);
+  color: rgb(204, 123, 255);
+  font-weight: bold;
+  font-family: sans-serif ;
+}
+input:focus{
+  outline: 0;
+  border: 3px solid rgb(255, 137, 137);
+  background-color: rgb(255, 227, 227);
+  color: rgb(255, 123, 123);
+}
+
+.form-price {
+  border: 3px solid rgb(210, 137, 255);
+  margin: 5px;
+  border-radius: 4px;
+  background: rgb(244, 227, 255);
+  color: rgb(204, 123, 255);
+  font-weight: bold;
+  font-family: sans-serif ;
+}
