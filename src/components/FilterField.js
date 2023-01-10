@@ -1,25 +1,24 @@
-import { useSelector, useDispatch } from "react-redux";
-import { FILTER_SERVICE_FIELD } from "../actions/actionTypes";
+import { useDispatch } from 'react-redux';
+import { FILTER_SERVICE_FIELD } from '../actions/actionTypes';
 
 export default function FilterField() {
-  const filterItems = useSelector((state) => state.filterField);
-  const items = useSelector((state) => state.serviceList);
-  console.log(filterItems);
-  const dispatch = useDispatch();
-  const handleSubmit = () => {
-    dispatch();
-  };
-  const handleChange = (evt) => {
-    const { value } = evt.target;
-    dispatch({ type: FILTER_SERVICE_FIELD, payload: { items, value } });
-  };
+	const dispatch = useDispatch();
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input className="form-filter" name="service" onChange={handleChange} />
-      <button className="form-button" type="submit">
-        filtered
-      </button>
-    </form>
-  );
+	const handleChange = (evt) => {
+		const { value } = evt.target;
+		dispatch({ type: FILTER_SERVICE_FIELD, payload: { search: value } });
+	};
+
+	return (
+		<form>
+			<input
+				className='form-filter'
+				name='service'
+				onChange={handleChange}
+			/>
+			{/* <button className='form-button' type='submit'>
+				filtered
+			</button> */}
+		</form>
+	);
 }
