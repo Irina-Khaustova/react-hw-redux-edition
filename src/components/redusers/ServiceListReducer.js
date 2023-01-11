@@ -11,40 +11,38 @@ const initialState = {
     { id: nanoid(), name: "Замена стекла", price: 21000 },
     { id: nanoid(), name: "Замена дисплея", price: 25000 },
   ],
-  isEdit: false,
+  isEditingItem: null,
 };
 
 export default function serviceListReducer(state = initialState, action) {
   switch (action.type) {
-    case ADD_SERVICE:
+    case ADD_SERVICE: {
       const { name, price } = action.payload;
-      let newState = state;
-      console.log(newState);
       return {
         ...state,
         items: [...state.items, { id: nanoid(), name, price: Number(price) }],
       };
-    case REMOVE_SERVICE:
+    }
+    case REMOVE_SERVICE: {
       const { id } = action.payload;
-      //console.log(state)
       return {
         ...state,
         items: state.items.filter((service) => service.id !== id),
       };
-    case SAVE_EDIT_FIELD:
-      //console.log(action.payload)
-      const { editId, editName, editPrice } = action.payload;
-      const editItems = state.items.map((el) => {
-        if (el.id === editId) {
-          el.name = editName;
-          el.price = editPrice;
-        }
-        return el;
-      });
-      return { ...state, items: editItems, isEdit: false };
-    case CHANGE_EDIT_STATUS:
-      console.log(state);
-      return { ...state, isEdit: true };
+    }
+    case SAVE_EDIT_FIELD: {
+      const { name, price } = action.payload;
+      const editItem = state.isEditingItem.editItem;
+      let editingItem = state.items.filter((el) => el.id === editItem.id);
+      editingItem[0].name = name;
+      editingItem[0].price = price;
+      return { ...state, items: [...state.items], isEditingItem: null };
+    }
+    case CHANGE_EDIT_STATUS: {
+      const editItem = action.payload;
+      const isEditItem = editItem ? editItem : null;
+      return { ...state, isEditingItem: isEditItem };
+    }
     default:
       return state;
   }
