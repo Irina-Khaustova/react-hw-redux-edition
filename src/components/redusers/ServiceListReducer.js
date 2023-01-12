@@ -39,8 +39,9 @@ export default function serviceListReducer(state = initialState, action) {
       return { ...state, items: [...state.items], isEditingItem: null };
     }
     case CHANGE_EDIT_STATUS: {
+      console.log(action.payload)
       const editItem = action.payload;
-      const isEditItem = editItem ? editItem : null;
+      const isEditItem = editItem.editItem ? editItem : null;
       return { ...state, isEditingItem: isEditItem };
     }
     default:

@@ -9,7 +9,8 @@ export default function filterFieldReducer(state = initialState, action) {
   switch (action.type) {
     case FILTER_SERVICE_FIELD:
       const { items, value } = action.payload;
-      const filterItems = items.items.filter((el) => el.name.includes(value));
+      const newValue = value.toLowerCase();
+      const filterItems = items.items.filter((el) => el.name.toLowerCase().includes(newValue));
       return { ...state, filterItems: filterItems, filterValue: value };
     default:
       return state;

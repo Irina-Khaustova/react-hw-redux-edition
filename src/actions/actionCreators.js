@@ -27,5 +27,5 @@ export function editServiceField(name, value) {
   return { type: EDIT_SERVICE_FIELD, payload: { name, value} };
 }
 export function changeEditStatus(value) {
-  return { type: CHANGE_EDIT_STATUS, payload: { value} };
+  return { type: CHANGE_EDIT_STATUS, payload: { value }};
 }

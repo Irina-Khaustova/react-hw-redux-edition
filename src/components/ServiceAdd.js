@@ -28,13 +28,15 @@ export default function ServiceAdd() {
     name = "";
     let value = "";
     dispatch(editServiceField(name, value));
+    console.log(isEditingItem)
   };
 
   const handleCancel = () => {
     let name = "";
     let value = "";
     dispatch(editServiceField(name, value));
-    dispatch(changeEditStatus(false));
+    dispatch(changeEditStatus(null));
+    console.log()
   };
   return (
     <>

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { removeService } from "../actions/actionCreators";
+import { removeService, editServiceField, changeEditStatus } from "../actions/actionCreators";
 import { CHANGE_EDIT_STATUS } from "../actions/actionTypes";
 import { EDIT_SERVICE_FIELD } from "../actions/actionTypes";
 
@@ -20,8 +20,8 @@ export default function ServiceList() {
     let editItem = editItemMass[0];
     const name = editItem.name;
     const value = editItem.price;
-    dispatch({ type: EDIT_SERVICE_FIELD, payload: { name, value } });
-    dispatch({ type: CHANGE_EDIT_STATUS, payload: { editItem } });
+    dispatch(editServiceField( name, value ));
+    dispatch({type: CHANGE_EDIT_STATUS, payload: { editItem }});
   };
 
   return (

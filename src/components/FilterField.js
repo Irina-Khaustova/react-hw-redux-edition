@@ -13,10 +13,14 @@ export default function FilterField() {
     dispatch(filterServiceField(items, value));
   };
 
+  const handleFiltered = (evt) => {
+    evt.preventDefault();
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <input className="form-filter" name="service" onChange={handleChange} />
-      <button className="form-button" type="submit">
+      <button className="form-button" type="submit" onClick={handleFiltered}>
         filtered
       </button>
     </form>
